@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_custservice
+          uri: http://localhost:50043/v1
+          predicates:
+          - Path= /cust/*
+        - id: api_authservice
+          uri: http://localhost:50042/
+          predicates:
+          - Path= /v1/api/auth/*
+
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds = 5000
+          

@@ -1,0 +1,45 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: api_serviceregistry
+eureka:
+  instance:
+    hostname: sr1
+  client:
+    registerWithEureka: true  
+    fetchRegistry: true        
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+#spring:
+  #profiles: 127.0.0.1
+#server:
+  #port: 8761
+#eureka:
+  #instance:
+    #hostname: peer1
+  #client:
+    #registerWithEureka: true  
+    #fetchRegistry: true       
+    #serviceUrl:
+      #defaultZone: http://127.0.0.1:8762/eureka/ 
+#spring:
+  #profiles: 127.0.0.1
+#server:
+  #port: 8762
+#eureka:
+  #instance:
+    #hostname: peer2
+  #client:
+    #registerWithEureka: true
+    #fetchRegistry: true
+    #serviceUrl:
+      #defaultZone: http://127.0.0.1:8761/eureka/   
+      
+logging:
+  #file: logs/eureka-server.log  
+  level:
+    ROOT: INFO
+    com.netflix.eureka: INFO
+    com.netflix.discovery: ERROR

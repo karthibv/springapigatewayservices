@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api_configserver
+  cloud:
+    config:
+      profile : dev
+      enabled : true
+      server:
+        #native:
+          #search-locations: /Users/kv11606/Desktop/Karthik/Personal/config-repo/
+        git:
+          uri: https://github.com/karthibv/apigateway/
+          username: xxxxxxx
+          password: 1111111
+          search-paths: config-repo
+          clone-on-start: true

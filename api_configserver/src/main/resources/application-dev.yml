@@ -1,0 +1,22 @@
+logging:
+  level:
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+    org.springframework.cloud: DEBUG
+
+spring:
+  cloud:
+    config:
+      server:
+        #native:
+        #search-locations: /Users/kv11606/Desktop/Karthik/Personal/config-repo/
+        git:
+          uri: ${config.repo.uri:https://github.com/karthibv/apigateway}
+          searchPaths: config-repo
+          username:
+          password:
+          repos:
+             patterns: multi-repo-demo-*
+             uri: ${config.repo.uri:https://github.com/karthibv/apigateway}
+        encrypt:
+          enabled: true

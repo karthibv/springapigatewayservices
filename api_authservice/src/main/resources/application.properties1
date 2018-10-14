@@ -1,0 +1,10 @@
+spring.application.name=api_authservice
+spring.cloud.config.label=master
+spring.cloud.config.profile=dev
+#spring.cloud.config.uri= http://localhost:8888/
+
+
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+spring.cloud.config.discovery.enabled=true
+spring.cloud.config.discovery.serviceId=api_configserver
+server.port=50042

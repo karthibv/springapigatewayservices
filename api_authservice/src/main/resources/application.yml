@@ -1,0 +1,56 @@
+server.port: 10042
+spring.datasource:
+  url: "jdbc:h2:mem:testdb"
+  driverClassName: org.h2.Driver
+  username: sa
+  password: ""
+  data: "classpath*:data.sql"
+spring.jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+spring:
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      enabled: true
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  application:
+    name: api_authservice
+  cloud:
+    config:
+      name: master
+      label: dev
+      discovery:
+        enabled: true
+        service-id: api_configserver
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://tran-vmware-pc:3306/Test
+#    username:  root
+#    password: 12345
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic:
+      userCreated: USER_CREATED_TOPIC
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.*   
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type: trace
+        

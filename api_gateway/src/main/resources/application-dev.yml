@@ -1,0 +1,51 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_custservice
+          uri: http://localhost:50043
+          predicates:
+          - Path= /api/cust/*
+        - id: api_authservice
+          uri: http://localhost:10042
+          predicates:
+          - Path= /users/register
+jwt:
+  header: Authorization
+  param: token
+  secret: m6sXDUKZSY154e9N
+  expiration: 604800000
+  prefix: Bearer
+  route:
+    authentication:
+      path: auth
+      token: token
+      refresh: refresh     
+
+spring.datasource:
+  url: "jdbc:h2:mem:testdb"
+  driverClassName: org.h2.Driver
+  username: sa
+  password: ""
+  data: "classpath*:data.sql"
+spring.jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      enabled: true
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://tran-vmware-pc:3306/Test
+#    username:  root
+#    password: 12345
+
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds = 5000
+          
